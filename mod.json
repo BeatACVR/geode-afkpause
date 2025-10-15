@@ -8,12 +8,14 @@
 	},
 	"id": "beat.afk_pause",
 	"name": "AFK Pause",
-	"version": "v1.0.0",
+	"version": "v1.0.1",
 	"developer": "Beat",
 	"description": "Automatically pauses the level if you go AFK",
-	"dependencies": {
-		"geode.node-ids": ">=v1.20.0"
-	},
+	"tags": [
+		"gameplay",
+		"enhancement",
+		"offline"
+	],
 	"settings": {
 		"enabled": {
 			"name": "Enabled",
