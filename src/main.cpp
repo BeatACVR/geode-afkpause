@@ -20,7 +20,9 @@ class $modify(afkPlayLayer, PlayLayer) {
 
 		if (afkDeaths >= Mod::get()->getSettingValue<int64_t>("attempt-threshold")) {
 			afkDeaths = 1;
-			this->pauseGame(false);
+			if (Mod::get()->getSettingValue<bool>("enabled")) {
+				this->pauseGame(false);
+			}
 		} else {
 			afkDeaths++;
 		}
