@@ -1,0 +1,35 @@
+{
+	"geode": "4.8.0",
+	"gd": {
+		"win": "2.2074",
+		"android": "2.2074",
+		"mac": "2.2074",
+		"ios": "2.2074"
+	},
+	"id": "beat.afk_pause",
+	"name": "AFK Pause",
+	"version": "v1.0.0",
+	"developer": "Beat",
+	"description": "Automatically pauses the level if you go AFK",
+	"dependencies": {
+		"geode.node-ids": ">=v1.20.0"
+	},
+	"settings": {
+		"enabled": {
+			"name": "Enabled",
+			"type": "bool",
+			"default": true
+		},
+		"attempt-threshold": {
+			"name": "Attempt Threshold",
+			"description": "How many attempts without input before pausing the game?",
+			"type": "int",
+			"default": 5,
+			"min": 3,
+			"max": 1000,
+			"control": {
+				"big-arrows": true
+			}
+		}
+	}
+}
