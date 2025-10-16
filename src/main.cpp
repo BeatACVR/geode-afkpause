@@ -4,28 +4,32 @@
 
 using namespace geode::prelude;
 
-int afkDeaths = 1;
-
-class $modify(afkPlayerObject, PlayerObject) {
-	bool pushButton(PlayerButton p0) {
-		if (!PlayerObject::pushButton(p0) || !GameManager::sharedState()->getPlayLayer()) return false;
-		afkDeaths = 1;
-		return true;
-	}
-};
-
 class $modify(afkPlayLayer, PlayLayer) {
+	struct Fields {
+		int m_afkDeaths = 1;
+	};
+	
 	void resetLevel() {
 		PlayLayer::resetLevel();
 
-		if (afkDeaths >= Mod::get()->getSettingValue<int64_t>("attempt-threshold")) {
-			afkDeaths = 1;
+		if (m_fields->m_afkDeaths >= Mod::get()->getSettingValue<int64_t>("attempt-threshold")) {
+			m_fields->m_afkDeaths = 1;
 			if (Mod::get()->getSettingValue<bool>("enabled")) {
 				this->pauseGame(false);
+				Notification::create("Game paused due to inactivity.", CCSprite::createWithSpriteFrameName("GJ_infoIcon_001.png"))->show();
 			}
 		} else {
-			afkDeaths++;
+			m_fields->m_afkDeaths++;
 		}
 		return;
 	}
+};
+
+class $modify(afkPlayerObject, PlayerObject) {
+    bool pushButton(PlayerButton p0) {
+        if (auto playLayer = static_cast<afkPlayLayer*>(PlayLayer::get())) {
+            playLayer->m_fields->m_afkDeaths = 1;
+        }
+        return PlayerObject::pushButton(p0);
+    }
 };
