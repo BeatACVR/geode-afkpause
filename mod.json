@@ -7,8 +7,8 @@
 		"ios": "2.2074"
 	},
 	"id": "beat.afk_pause",
-	"name": "Mega AFK Pause",
-	"version": "v1.0.3",
+	"name": "AFK Pause",
+	"version": "v1.0.4",
 	"developer": "Beat",
 	"description": "Automatically pauses the level if you go AFK",
 	"tags": [
@@ -35,5 +35,6 @@
 		}
 	}
 }
+
 
 
