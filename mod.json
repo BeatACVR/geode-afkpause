@@ -8,7 +8,7 @@
 	},
 	"id": "beat.afk_pause",
 	"name": "AFK Pause",
-	"version": "v1.0.4",
+	"version": "v1.0.5",
 	"developer": "Beat",
 	"description": "Automatically pauses the level if you go AFK",
 	"tags": [
@@ -35,6 +35,7 @@
 		}
 	}
 }
+
 
 
 
