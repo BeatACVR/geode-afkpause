@@ -18,7 +18,7 @@ class $modify(afkPlayLayer, PlayLayer) {
 			m_fields->m_afkDeaths = 1;
 			if (afkMod->getSettingValue<bool>("enabled")) {
 				this->pauseGame(false);
-				if (afkMod->getSettingValue<bool>("suppress-notifications")) {
+				if (!afkMod->getSettingValue<bool>("suppress-notifications")) {
 					Notification::create("Game paused due to inactivity.", CCSprite::createWithSpriteFrameName("GJ_infoIcon_001.png"))->show();
 				}
 			}
@@ -41,3 +41,4 @@ class $modify(afkPlayerObject, PlayerObject) {
         return PlayerObject::pushButton(p0);
     }
 };
+
