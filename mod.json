@@ -22,6 +22,11 @@
 			"type": "bool",
 			"default": true
 		},
+		"suppress-notifications": {
+			"name": "Suppress Notifications",
+			"type": "bool",
+			"default": false
+		},
 		"attempt-threshold": {
 			"name": "Attempt Threshold",
 			"description": "How many attempts without input before pausing the game?",
