@@ -6,7 +6,7 @@ using namespace geode::prelude;
 
 class $modify(afkPlayLayer, PlayLayer) {
 	struct Fields {
-		int m_afkDeaths = 1;
+		int m_afkDeaths = 0;
 	};
 	
 	void resetLevel() {
@@ -15,7 +15,7 @@ class $modify(afkPlayLayer, PlayLayer) {
 		Mod* afkMod = Mod::get();
 
 		if (m_fields->m_afkDeaths >= afkMod->getSettingValue<int64_t>("attempt-threshold")) {
-			m_fields->m_afkDeaths = 1;
+			m_fields->m_afkDeaths = 0;
 			if (afkMod->getSettingValue<bool>("enabled")) {
 				this->pauseGame(false);
 				if (!afkMod->getSettingValue<bool>("suppress-notifications")) {
@@ -36,7 +36,7 @@ class $modify(afkPlayerObject, PlayerObject) {
 	
 	bool pushButton(PlayerButton p0) {
         if (m_fields->m_playLayer) {
-            m_fields->m_playLayer->m_fields->m_afkDeaths = 1;
+            m_fields->m_playLayer->m_fields->m_afkDeaths = 0;
         }
         return PlayerObject::pushButton(p0);
     }
